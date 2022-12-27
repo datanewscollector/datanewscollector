@@ -10,7 +10,7 @@ else {
 }
 user{
 
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
+	if(isset($_POST['m_login_signup_submit'])){
 		$username=$_POST["UserName"];
 		$firstname=$_POST["FirstName"];
 		$lastname=$_POST["LastName"];
