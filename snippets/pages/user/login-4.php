@@ -20,6 +20,7 @@
 		</script>
 		<?php
 	include '../../../modules/user.php'
+	include '../../../modules/user.php'
 	?>
 		<!--end::Web font -->
 		<!--begin::Base Styles -->

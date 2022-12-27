@@ -22,6 +22,9 @@
 		</script>
         <?php
 	include 'modules/user.php'?>
+    <?php
+    include "db.php"
+    ?>
 		<!--end::Web font -->
 		<!--begin::Base Styles -->
 		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
