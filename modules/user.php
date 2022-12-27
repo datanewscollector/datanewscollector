@@ -17,11 +17,5 @@ user{
 		$email=$_POST["email"];
 		$password=$_POST["password"];
 	}
-	
-    $sql = "Select * from users where username='$username'";
-    
-    $result = mysqli_query($conn, $sql);
-    
-    $num = mysqli_num_rows($result);
 }
 ?>
