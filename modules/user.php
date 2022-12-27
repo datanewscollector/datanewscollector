@@ -1,15 +1,15 @@
 <?php
+// Create a connection
+$conn = mysqli_connect("localhost", "root", "", "dnc");
+
+if($conn) {
+	echo "success";
+}
+else {
+	die("Error". mysqli_connect_error());
+}
 user{
 
-	// Create a connection
-	$conn = mysqli_connect("localhost", "root", "", "dnc");
-
-	if($conn) {
-		echo "success";
-	}
-	else {
-		die("Error". mysqli_connect_error());
-	}
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$username=$_POST["UserName"];
 		$firstname=$_POST["FirstName"];
