@@ -2,7 +2,7 @@
 user{
 
 	// Create a connection
-	$conn = mysqli_connect("localhost", "root", "", "DNC");
+	$conn = mysqli_connect("localhost", "root", "", "dnc");
 
 	if($conn) {
 		echo "success";
