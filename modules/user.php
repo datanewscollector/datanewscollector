@@ -1,6 +1,8 @@
 <?php
 	include '../db.php';
 user{
+
+	function signup_user() {
 	//signup
 	// Now we check if the data was submitted, isset() function will check if the data exists.
 if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
@@ -56,6 +58,9 @@ if ($stmt = $con->prepare('INSERT INTO users (username, firstname, lastname, ema
 	// Something is wrong with the sql statement, check to make sure accounts table exists with all 5 fields.
 	echo 'Could not prepare statement!';
 }
+	}
+
+	function login_user(){
 
 //create login function in php that get data from db
 
@@ -82,7 +87,7 @@ if(isset($_POST['login'])){
     $rows = $result->fetch(PDO::FETCH_NUM);
     if($rows > 0) {
         $_SESSION['username'] = $user;
-        header("location: ./pages/home.php");
+        header("location: '../index.html'");
     }
     else{
         $errmsg_arr[] = 'Username and Password are not found';
@@ -90,14 +95,29 @@ if(isset($_POST['login'])){
     }
 
 }
+	}
 
+	function encryption() {
+//Encryption method
+$unencrypted_password = "johnny@123"; 
+  
+// The hash of the password can be saved in the database
+$hash = password_hash($unencrypted_password, PASSWORD_DEFAULT); 
 
+bool password_verify(string $password, string $hash)
 
+ // Verify the hash code against the unencrypted password entered 
+ $verify = password_verify($unencrypted_password, $hash); 
+  
+ // Print the result depending if they match 
+ if ($verify) {
+	  echo 'Correct Password!'; 
+	  }
 
-
-
-
-
+ else { 
+	 echo 'Password is Incorrect';
+	  } 
+	}
 
 
 	
