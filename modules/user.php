@@ -1,125 +1,75 @@
 <?php
-	include '../db.php';
-user{
+  include 'constants.php';
+class user{
 
-	function signup_user() {
-	//signup
-	// Now we check if the data was submitted, isset() function will check if the data exists.
-if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
-	// Could not get the data that should have been sent.
-	exit('Please complete the registration form!');
-}
-// Make sure the submitted registration values are not empty.
-if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
-	// One or more values are empty.
-	exit('Please complete the registration form');
+	private $conn;
+
+  public function _construct() {
+    // Connect to the database
+    $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+  }
+
+  public function signup($username, $firstname, $lastname, $email, $password) {
+    // Validate the name, email, and password
+    if (empty($username) || empty($firstname) || empty($lastname) || !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 8) {
+      return false;
+    }
+
+    $result = $this->conn->query("SELECT * FROM users WHERE username='$username'");
+  if ($result->num_rows > 0) {
+    // The username is already taken, return false
+    return false;
+  }
+
+    // Hash the password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert the new user into the database
+    $result = $this->conn->query("INSERT INTO users (username, firstname, lastname, email, password) VALUES ('$username', '$firstname', '$lastname', '$email', '$password')");
+    if ($result) {
+      // The user was added successfully, return true
+      return true;
+    } else {
+      // There was an error adding the user, return false
+      return false;
+    }
+  }
+
+  public function login($email, $password) {
+    // Check if the email and password match a user in the database
+    $result = $this->conn->query("SELECT * FROM users WHERE email='$email'");
+    if ($result->num_rows > 0) {
+      // The email matches a user in the database, check the password
+      $user = $result->fetch_assoc();
+      if (password_verify($password, $user['password'])) {
+        // The password is correct, log the user in and return true
+        return true;
+      } else {
+        // The password is incorrect, return false
+        return false;
+      }
+    } else {
+      // The email does not match a user in the database, return false
+      return false;
+    }
+  }
 }
 
-//email validation
-if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-	exit('Email is not valid!');
-}
 
-//invalid characters validation
-if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
-    exit('Username is not valid!');
-}
+/*
+$user = new User();
 
-//characters length check
-if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 8) {
-	exit('Password must be between 8 and 20 characters long!');
-}
+if ($user->signup('JohnSmith', 'John', 'Smith', 'john@example.com', 'password123')) {
 
-// We need to check if the account with that username exists.
-if ($stmt = $con->prepare('SELECT id, password FROM users WHERE username = ?')) {
-	// Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
-	$stmt->bind_param('s', $_POST['username']);
-	$stmt->execute();
-	$stmt->store_result();
-	// Store the result so we can check if the account exists in the database.
-	if ($stmt->num_rows > 0) {
-		// Username already exists
-		echo 'Username exists, please choose another!';
-	} else {
-		// Username doesnt exists, insert new account
-if ($stmt = $con->prepare('INSERT INTO users (username, firstname, lastname, email, password) VALUES (?, ?, ?, ?, ?)')) {
-	// We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
-	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	$stmt->bind_param('sss', $_POST['username'],$_POST['fistname'], $_POST['lastname'], $_POST['email'], $password);
-	$stmt->execute();
-	echo 'You have successfully registered, you can now login!';
 } else {
-	// Something is wrong with the sql statement, check to make sure accounts table exists with all 5 fields.
-	echo 'Could not prepare statement!';
+
 }
-	}
-	$stmt->close();
+
+if ($user->login('john@example.com', 'password123')) {
+
 } else {
-	// Something is wrong with the sql statement, check to make sure accounts table exists with all 5 fields.
-	echo 'Could not prepare statement!';
-}
-	}
-
-	function login_user(){
-
-//create login function in php that get data from db
-
-if(isset($_POST['login'])){
-
-    // new data
-    $user = $_POST['your name of email input'];
-    $password = $_POST['password'];
-
-    if($user == '') {
-        $errmsg_arr[] = 'You must enter your Username';
-        $errflag = true;
-    }
-    if($password == '') {
-        $errmsg_arr[] = 'You must enter your Password';
-        $errflag = true;
-    }
-
-    // query
-    $result = $conn->prepare("SELECT * FROM login WHERE username= :u AND password= :p");
-    $result->bindParam(':u', $user);
-    $result->bindParam(':p', $password);
-    $result->execute();
-    $rows = $result->fetch(PDO::FETCH_NUM);
-    if($rows > 0) {
-        $_SESSION['username'] = $user;
-        header("location: '../index.html'");
-    }
-    else{
-        $errmsg_arr[] = 'Username and Password are not found';
-        $errflag = true;
-    }
 
 }
-	}
-
-	function encryption() {
-//Encryption method
-$unencrypted_password = "johnny@123"; 
-  
-// The hash of the password can be saved in the database
-$hash = password_hash($unencrypted_password, PASSWORD_DEFAULT); 
-
-bool password_verify(string $password, string $hash)
-
- // Verify the hash code against the unencrypted password entered 
- $verify = password_verify($unencrypted_password, $hash); 
-  
- // Print the result depending if they match 
- if ($verify) {
-	  echo 'Correct Password!'; 
-	  }
-
- else { 
-	 echo 'Password is Incorrect';
-	  } 
-	}
-
-
-	
-}
+ */    	
+    
 ?>
