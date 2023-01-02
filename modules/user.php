@@ -4,7 +4,7 @@ class user{
 
 	private $conn;
 
-  public function _construct() {
+  private function _construct() {
     // Connect to the database
     $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
   }
