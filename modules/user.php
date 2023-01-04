@@ -5,8 +5,7 @@ class user{
 	private $conn;
 
   private function _construct() {
-    // Connect to the database
-    $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+  
   }
 
   public function signup($username, $firstname, $lastname, $email, $password) {
