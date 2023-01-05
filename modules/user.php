@@ -72,7 +72,7 @@ public function checkLogin($dbclient) {
 }
 
 public function signup($dbclient) {
-  $result = $dbclient->execute("INSERT INTO users (username,firstname, lastname, email, pass) VALUES (" .
+  $result = $dbclient->execute("INSERT INTO users (username,firstname, lastname, email, password) VALUES (" .
         "'" . $this->getUsername() . "', " .
         "'" . $this->getFirstname() . "', " .
         "'" . $this->getLastname() . "', " .

@@ -1,9 +1,8 @@
 <?php
-    include 'constants.php';
 class DB_Client {
 
   private $servername = "localhost";
-  private $portnumber = 8080;
+  private $portnumber = 8000;
   private $dbname = "dnc";
   private $username = "root";
   private $password = "";
