@@ -172,6 +172,8 @@
 		<!--end::Base Scripts -->
 		<!--begin::Page Snippets -->
 		<script src="../../../assets/snippets/pages/user/login.js" type="text/javascript"></script>
+		<script src="../../../assets/snippets/pages/user/jquery-3.6.0.min.js" type="text/javascript"></script>
+		<script src="../../../assets/snippets/pages/user/login1.js" type="text/javascript"></script>
 		<!--end::Page Snippets -->
 	</body>
 	<!-- end::Body -->

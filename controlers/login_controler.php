@@ -11,8 +11,8 @@
     switch (strtolower($function)) {
         case 'signin':
             $new_user = new User();
-            if (isset($_POST['email']) && isset($_POST['password'])) {
-                $new_user->setEmail($_POST['email']);
+            if (isset($_POST['username']) && isset($_POST['password'])) {
+                $new_user->setUsername($_POST['username']);
                 $new_user->setPassword($_POST['password']);
 
                 $result = $new_user->checkLogin($dbClient);

@@ -66,7 +66,7 @@ public function getPassword() {
 public function checkLogin($dbclient) {
   $result = $dbclient->executeQuery("SELECT * FROM users WHERE username LIKE '" . $this->username . "' AND pass LIKE '" . $this->password . "'");
   while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-      return $row;
+      return true;
   }
   return false;
 }
@@ -88,7 +88,7 @@ public function signup($dbclient) {
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             return false;
         }
-        return $row;
+        return true;
     }
 }
  
