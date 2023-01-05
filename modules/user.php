@@ -1,74 +1,96 @@
 <?php
   include 'constants.php';
-class user{
+class User{
 
-	private $conn;
+  private $id;
+  private $firstname;
+  private $lastname;
+  private $username;
+  private $email;
+  private $password;
+  
 
   private function _construct() {
   
   }
 
-  public function signup($username, $firstname, $lastname, $email, $password) {
-    // Validate the name, email, and password
-    if (empty($username) || empty($firstname) || empty($lastname) || !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 8) {
-      return false;
-    }
-
-    $result = $this->conn->query("SELECT * FROM users WHERE username='$username'");
-  if ($result->num_rows > 0) {
-    // The username is already taken, return false
-    return false;
-  }
-
-    // Hash the password
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Insert the new user into the database
-    $result = $this->conn->query("INSERT INTO users (username, firstname, lastname, email, password) VALUES ('$username', '$firstname', '$lastname', '$email', '$password')");
-    if ($result) {
-      // The user was added successfully, return true
-      return true;
-    } else {
-      // There was an error adding the user, return false
-      return false;
-    }
-  }
-
-  public function login($email, $password) {
-    // Check if the email and password match a user in the database
-    $result = $this->conn->query("SELECT * FROM users WHERE email='$email'");
-    if ($result->num_rows > 0) {
-      // The email matches a user in the database, check the password
-      $user = $result->fetch_assoc();
-      if (password_verify($password, $user['password'])) {
-        // The password is correct, log the user in and return true
-        return true;
-      } else {
-        // The password is incorrect, return false
-        return false;
-      }
-    } else {
-      // The email does not match a user in the database, return false
-      return false;
-    }
-  }
+  //Setters
+  public function setID($user_id) {
+    $this->id = $user_id;
 }
 
-
-/*
-$user = new User();
-
-if ($user->signup('JohnSmith', 'John', 'Smith', 'john@example.com', 'password123')) {
-
-} else {
-
+public function setUsername($user_name) {
+  $this->username = $user_name;
 }
 
-if ($user->login('john@example.com', 'password123')) {
-
-} else {
-
+public function setFirstname($first_name) {
+  $this->username = $first_name;
 }
- */    	
-    
+
+public function setLastname($last_name) {
+  $this->username = $last_name;
+}
+
+public function setEmail($email) {
+    $this->email = $email;
+}
+
+public function setPassword($password) {
+    $this->password = $password;
+}
+
+//Getters
+public function getID() {
+    return $this->id;
+}
+
+public function getUsername() {
+  return $this->username;
+}
+
+public function getFirstname() {
+  return $this->firstname;
+}
+
+public function getLastname() {
+  return $this->lastname;
+}
+
+public function getEmail() {
+    return $this->email;
+}
+
+public function getPassword() {
+    return $this->password;
+}
+
+public function checkLogin($dbclient) {
+  $result = $dbclient->executeQuery("SELECT * FROM users WHERE username LIKE '" . $this->username . "' AND pass LIKE '" . $this->password . "'");
+  while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+      return $row;
+  }
+  return false;
+}
+
+public function signup($dbclient) {
+  $result = $dbclient->execute("INSERT INTO users (username,firstname, lastname, email, pass) VALUES (" .
+        "'" . $this->getUsername() . "', " .
+        "'" . $this->getFirstname() . "', " .
+        "'" . $this->getLastname() . "', " .
+        "'" . $this->getEmail() . "', " .
+        "'" . $this->getPassword() . "'" .
+        ")");
+
+        return $result;
+    }
+
+    public function isAvailable($dbclient, $column, $value) {
+        $result = $dbclient->executeQuery("SELECT * FROM users WHERE " . $column . " LIKE '". $value . "'");
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            return false;
+        }
+        return $row;
+    }
+}
+ 
 ?>
