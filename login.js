@@ -36,5 +36,5 @@ $("#login").unbind("click").click(function() {
 });
 
 $("#signup").unbind("click").click(function () {
-	location.href = '../../../../snippets/pages/user/login.php';
+	location.href = 'pages/login.html';
 });
