@@ -2,8 +2,7 @@
 class User{
 
   private $id;
-  private $firstname;
-  private $lastname;
+  private $fullname;
   private $username;
   private $email;
   private $password;
@@ -18,16 +17,12 @@ class User{
     $this->id = $user_id;
 }
 
-public function setUsername($user_name) {
-  $this->username = $user_name;
+public function setUsername($username) {
+  $this->username = $username;
 }
 
-public function setFirstname($first_name) {
-  $this->username = $first_name;
-}
-
-public function setLastname($last_name) {
-  $this->username = $last_name;
+public function setFullname($fullname) {
+  $this->fullname = $fullname;
 }
 
 public function setEmail($email) {
@@ -47,12 +42,8 @@ public function getUsername() {
   return $this->username;
 }
 
-public function getFirstname() {
-  return $this->firstname;
-}
-
-public function getLastname() {
-  return $this->lastname;
+public function getFullname() {
+  return $this->fullname;
 }
 
 public function getEmail() {
@@ -72,10 +63,9 @@ public function checkLogin($dbclient) {
 }
 
 public function signup($dbclient) {
-  $result = $dbclient->execute("INSERT INTO users (username,firstname, lastname, email, password) VALUES (" .
+  $result = $dbclient->execute("INSERT INTO users (username, fullname, email, password) VALUES (" .
         "'" . $this->getUsername() . "', " .
-        "'" . $this->getFirstname() . "', " .
-        "'" . $this->getLastname() . "', " .
+        "'" . $this->getFullname() . "', " .
         "'" . $this->getEmail() . "', " .
         "'" . $this->getPassword() . "'" .
         ")");
