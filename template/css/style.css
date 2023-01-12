@@ -1,124 +1,166 @@
-@import url(
-    'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  color: #b5afaf;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
-
-/* Body of the page */
-body {
-    background: #f2f2f2;
+nav{
+  background: #520422;
+  padding: 10px 40px 10px 70px;
+  border: 1px solid #520422;
+  border-left: none;
+  border-right: none;
 }
-
-/* Styling all the elements in nav as a whole */
-nav {
-    background: #220117;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-    padding: 0 100px;
+nav ul{
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-
-/* Styling the logo */
-nav .logo {
-    color: #fff;
-    font-size: 30px;
-    font-weight: 600;
-    letter-spacing: -1px;
+nav ul li.logo{
+  flex: 1;
+  font-size: 30px;
+  font-weight: 700;
 }
-
-/* Styling all the nav items as a whole */
-nav .nav-items {
-    display: flex;
-    flex: 1;
-    padding: 0 0 0 200px;
+nav ul div.items{
+  padding: 0 25px;
+  display: inline-flex;
 }
-
-/* Styling the list items in the nav tag */
-nav .nav-items li {
-    list-style: none;
-    padding: 0 10px;
+nav ul div.items a{
+  text-decoration: none;
+  font-size: 18px;
+  padding: 0 12px;
 }
-
-/* Styling each list items */
-nav .nav-items li a {
-    color: #fff;
-    font-size: 15px;
-    font-weight: 500;
-    text-decoration: none;
+nav ul div.items a:hover{
+  color: rgb(16, 18, 18);
 }
-
-/* Setting the hover colour on the list items*/
-  
-nav .nav-items li a:hover {
-    color: #19191b;
+nav ul .search-icon{
+  height: 40px;
+  width: 240px;
+  display: flex;
+  background: #f2f2f2;
+  border-radius: 5px;
 }
-  
-nav .searchbar {
-    position: relative;
+nav ul .search-icon input{
+  height: 100%;
+  width: 200px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  color: #000;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
 }
-
-/* Styling the search box where the 
-    input would be given */
-nav .searchbar input[type="text"] {
-    border: 0;
-    padding: 0;
-    width: 0px;
-    height: 35px;
-    border-radius: 3px;
-    transition: all 0.3s ease;
+nav ul .search-icon .icon{
+  height: 100%;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #cccccc;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
-
-/* Styling the search bar icon */
-nav .searchbar .icon {
-    display: flex;
-    position: absolute;
-    top: 0;
+nav ul .search-icon .icon:hover{
+  background: #e6e6e6;
+}
+nav ul .search-icon .icon span{
+  color: #222222;
+  font-size: 18px;
+}
+nav ul li.btn{
+  font-size: 29px;
+  flex: 1;
+  padding: 0 40px;
+  display: none;
+}
+nav ul li.btn span{
+  height: 42px;
+  width: 42px;
+  text-align: center;
+  line-height: 42px;
+  border: 1px solid #151515;
+  border-radius: 5px;
+  cursor: pointer;
+}
+nav ul li.btn span.show:before{
+  content: '\f00d';
+}
+@media screen and (max-width: 1052px) {
+  nav{
+    padding: 10px 40px 10px 0px;
+  }
+  nav ul li.logo{
+    display: none;
+  }
+  nav ul div.items{
+    flex: 4;
+  }
+}
+@media screen and (max-width: 800px){
+  nav ul li.btn{
+    display: block;
+  }
+  nav{
+    z-index: 1;
+    padding: 9px 40px 9px 0;
+  }
+  nav ul div.items{
+    z-index: -1;
+    position: fixed;
+    top: -220px;
     right: 0;
-    width: 35px;
-    height: 100%;
-    background: none;
-    border-radius: 3px;
-    color: #fff;
-    transition: all 0.5s 0.3s ease;
+    width: 100%;
+    background: #222222;
+    display: inline-block;
+    transition: top .4s;
+  }
+  nav ul div.items.show{
+    top: 60px;
+  }
+  nav ul div.items li{
+    text-align: center;
+    line-height: 30px;
+    margin: 30px 0;
+  }
+  nav ul div.items li a{
+    font-size: 19px;
+  }
 }
-  
-nav .searchbar .icon i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
+@media screen and (max-width: 405px) {
+  nav ul{
+    flex-wrap: nowrap;
+  }
+  nav ul li.search{
+    width: 50vmin;
+  }
+  nav ul li input{
+    width: 40vmin;
+  }
+  nav ul li .search-icon{
+    width: 10vmin;
+  }
 }
-  
-nav .searchbar .icon.active {
-    background: #062333;
-    transition: all 0.3s ease;
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  padding: 0 40px;
+  z-index: -2;
 }
-  
-nav .searchbar input[type="text"].active {
-    width: 250px;
-    padding: 0 10px;
-    transition: all 0.5s 0.2s ease;
+.content .text{
+  font-size: 40px;
+  font-weight: 800;
+  padding: 5px 0;
+  color: #202020;
 }
-  
-nav .licon li {
-    list-style: none;
-    display: flex;
-}
-  
-nav .licon li a {
-    padding: 0 20px;
-}
-
-/* Changing the colour of the login 
-    icon when hovered over*/
-  
-.fa-user-circle:hover {
-    color: #0e0d0d !important;
+.content .p{
+  font-size: 28px;
+  font-weight: 600;
+  color: #202020;
 }
