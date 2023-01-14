@@ -7,9 +7,9 @@
   font-family: 'Montserrat', sans-serif;
 }
 nav{
-  background: #520422;
+  background: black;
   padding: 10px 40px 10px 70px;
-  border: 1px solid #520422;
+  border: 1px solid black;
   border-left: none;
   border-right: none;
 }
@@ -35,7 +35,7 @@ nav ul div.items a{
   padding: 0 12px;
 }
 nav ul div.items a:hover{
-  color: rgb(16, 18, 18);
+  color: rgb(14, 105, 105);
 }
 nav ul .search-icon{
   height: 40px;
