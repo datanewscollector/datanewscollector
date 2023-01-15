@@ -164,3 +164,53 @@ nav ul li.btn span.show:before{
   font-weight: 600;
   color: #202020;
 }
+
+/*** main container right */
+
+.main-container-right{
+  padding: 30px 10px;
+}
+
+.main-container-right > h2{
+  padding: 15px 0 15px 30px;
+}
+
+.main-container-right article{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  padding: 15px 0;
+  border-bottom: 1px solid #7ac64d;
+}
+
+.main-container-right article:last-child{
+  border-bottom: none;
+}
+
+.main-container-right img{
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+
+.main-container-right h4{
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 12px;
+  align-self: center;
+}
+
+.main-container-right article h2{
+  font-size: 18px;
+  padding: 10px 0;
+  font-family: var(--heading);
+}
+
+.main-container-right article p{
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.main-container-right article div{
+  margin-right: 10px;
+}
