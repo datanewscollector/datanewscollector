@@ -165,6 +165,37 @@ nav ul li.btn span.show:before{
   color: #202020;
 }
 
+
+/* ... */
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root{
+  --heading: 'Montserrat', sans-serif;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+  background: #fff;
+}
+
+/* global styling */
+
+img{
+  width: 100%;
+}
+ul{
+  list-style: none;
+}
+
+hr{
+  width: 95vw;
+  margin: 0 auto;
+}
+
 /*** main container right */
 
 .main-container-right{
@@ -173,13 +204,14 @@ nav ul li.btn span.show:before{
 
 .main-container-right > h2{
   padding: 15px 0 15px 30px;
+  color: #000;
 }
 
 .main-container-right article{
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   padding: 15px 0;
-  border-bottom: 1px solid #7ac64d;
+  border-bottom: 1px solid #000;
 }
 
 .main-container-right article:last-child{
@@ -194,6 +226,7 @@ nav ul li.btn span.show:before{
 
 .main-container-right h4{
   text-align: center;
+  color: #000;
   text-transform: uppercase;
   font-weight: 300;
   font-size: 12px;
@@ -202,12 +235,14 @@ nav ul li.btn span.show:before{
 
 .main-container-right article h2{
   font-size: 18px;
+  color: #000;
   padding: 10px 0;
   font-family: var(--heading);
 }
 
 .main-container-right article p{
   font-size: 15px;
+  color: #000;
   font-weight: 300;
 }
 
