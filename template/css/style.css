@@ -249,3 +249,54 @@ hr{
 .main-container-right article div{
   margin-right: 10px;
 }
+/* home css */
+.navbar {
+  background-color: black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px; 
+  height: 100%; 
+}
+
+table {
+  border: 2px solid black;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif; 
+}
+
+th, td {
+  color: #1B122D;
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.table-container {
+  margin-top: 2%;;
+  margin-left: 200px; 
+}
+
+.pagination-container {
+  text-align: center;
+}
+
+.prev-page, .next-page {
+  background-color: #9816F4;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 4px 2px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.prev-page:hover, .next-page:hover {
+  background-color: #6F449B;
+}
+

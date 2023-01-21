@@ -17,100 +17,29 @@
       <link rel="shortcut icon" href="../template/assets/media/img/logo/favicon.ico" />
    </head>
    <body>
-      <nav>
-         <ul>
-            <li class="logo">D N C</li>
-            <li class="btn"><span class="fas fa-bars"></span></li>
-            <div class="items">
-               <li><a href="home.html">HOME</a></li>
-               <li><a href="trending.html">TRENDING NEWS</a></li>
-               <li><a href="myaccount.html">MY ACCOUNT</a></li>
-            </div>
-
-            <li class="search-icon">
-               <input type="search" placeholder="Search">
-               <label class="icon">
-               <span class="fas fa-search"></span>
-               </label>
-            </li>
-         </ul>
-      </nav>
-      <section class = "main-container-right">
-          <h2>Search results</h2>
-          
-          <article>
-              <h4>just in </h4>
-             <div>
-                 <h2>Here's how to track your stimulus check with the IRS Get My Payment Portal</h2>
-
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellendus?</p>
-
-                 <a href = "#">Read More <span>>></span></a>
-             </div>
-             <!-- img src = "images/right-1.jpg" -->
-         </article>
-
-         <article>
-             <h4>just in </h4>
-             <div>
-                 <h2>The best outdoor games to play with your family</h2>
-
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellendus?</p>
-
-                 <a href = "#">Read More <span>>></span></a>
-             </div>
-             <!-- img src = "images/right-2.jpg" -->
-         </article>
-
-         <article>
-             <h4>just in </h4>
-             <div>
-                 <h2>Why walk? Check out the best electric scooters and e-bikes for 2020</h2>
-
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellendus?</p>
-
-                 <a href = "#">Read More <span>>></span></a>
-             </div>
-             <!-- img src = "images/right-3.jpg"-->
-         </article>
-
-         <article>
-             <h4>just in </h4>
-             <div>
-                 <h2>Disneyland Paris will stream its Lion King stage show Friday night</h2>
-
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellendus?</p>
-
-                 <a href = "#">Read More <span>>></span></a>
-             </div>
-             <!-- img src = "images/right-4.jpg"-->
-         </article>
-
-         <article>
-             <h4>just in </h4>
-             <div>
-                 <h2>Looking at a phone's lock screen also requries a warrant, judge rules</h2>
-
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellendus?</p>
-
-                 <a href = "#">Read More <span>>></span></a>
-             </div>
-             <!-- img src = "images/right-5.jpg" -->
-         </article>
-     </section>
-      <script>
-         $('nav ul li.btn span').click(function(){
-           $('nav ul div.items').toggleClass("show");
-           $('nav ul li.btn span').toggleClass("show");
-         });
-      </script>
-       
-    <!--begin::Base Scripts -->
-    <script src="template/js/vendors.bundle.js" type="text/javascript"></script>
-    <script src="template/js/scripts.bundle.js" type="text/javascript"></script>
-    <!--end::Base Scripts -->
-    <!--begin::Page Snippets -->
-    <script src="assets/app/js/dashboard.js" type="text/javascript"></script>
-    <!--end::Page Snippets -->
-</body>
+    <div class="navbar">
+      <!-- Navbar content -->
+      Side navbar
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Results</th>
+            <th>date/time</th>
+            <th>navigate</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Rows will be added here using JavaScript -->
+        </tbody>
+      </table>
+      <div class="pagination-container">
+        <button class="prev-page">Prev</button>
+        <button class="next-page">Next</button>
+      </div>
+    </div>
+  </body>
+  <script src="../template/js/script.js" type="text/javascript"></script>
 </html>
